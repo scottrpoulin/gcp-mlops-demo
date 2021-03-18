@@ -14,7 +14,7 @@
 # limitations under the License.
 
 PROJECT_ID=$(gcloud config config-helper --format "value(configuration.properties.core.project)")
-BUCKET="${PROJECT_ID}-kfpdemo"
+BUCKET="gcp-mlops-demo-opi"
 
 #bash ../build_container.sh
 docker run -t gcr.io/${PROJECT_ID}/babyweight-pipeline-hypertrain:latest ${BUCKET}

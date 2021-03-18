@@ -16,7 +16,7 @@ FROM google/cloud-sdk:latest
 
 RUN mkdir -p /babyweight/src && \
     cd /babyweight/src && \
-    git clone https://github.com/scottrpoulin/gcp-mlops-demo
+    git clone https://scottrpoulin@2TtDBk%g@github.com/scottrpoulin/gcp-mlops-demo
 
 COPY train.sh hyperparam.yaml ./
 
