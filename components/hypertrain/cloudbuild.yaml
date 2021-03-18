@@ -1,0 +1,6 @@
+steps:
+    - name: 'gcr.io/cloud-builders/docker'
+      dir:  'components/hypertrain'
+      args: [ 'build', '-t', 'gcr.io/tenacious-camp-267214/babyweight-pipeline-hypertrain:latest', '.' ]
+images:
+    - 'gcr.io/tenacious-camp-267214/babyweight-pipeline-hypertrain:latest'
