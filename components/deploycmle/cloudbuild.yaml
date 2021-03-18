@@ -4,3 +4,4 @@ steps:
       args: [ 'build', '-t', 'gcr.io/tenacious-camp-267214/babyweight-pipeline-deploycmle:latest', '.' ]
 images:
     - 'gcr.io/tenacious-camp-267214/babyweight-pipeline-deploycmle:latest'
+
