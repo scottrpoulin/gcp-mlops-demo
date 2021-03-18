@@ -30,7 +30,7 @@ HPARAM_JOB=$2
 ../build_container.sh
 
 # deploy Cloud Run
-gcloud run deploy kfpdemo \
+gcloud run deploy gcp-mlops-demo-opi \
    --platform=managed --region=${REGION} \
    --image gcr.io/${PROJECT}/babyweight-pipeline-pipeline \
    --set-env-vars PROJECT=${PROJECT},BUCKET=${BUCKET},PIPELINES_HOST=${PIPELINES_HOST},HPARAM_JOB=${HPARAM_JOB}
