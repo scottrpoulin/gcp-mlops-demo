@@ -52,7 +52,7 @@ def preprocess_train_and_deploy(
             '--start_year', start_year
           ],
           file_outputs={'bucket': '/output.txt'}
-      )
+      ).apply(use_gcp_secret('user-gcp-sa'))
     
 
     # Step 2: Do hyperparameter tuning of the model on Cloud ML Engine
@@ -64,7 +64,7 @@ def preprocess_train_and_deploy(
             preprocess.outputs['bucket']
         ],
         file_outputs={'jobname': '/output.txt'}
-      )
+      ).apply(use_gcp_secret('user-gcp-sa'))
     
     # core ML part of pipeline
     deploy_cmle = train_and_deploy_helper(preprocess, hparam_train)
@@ -81,7 +81,7 @@ def preprocess_train_and_deploy(
           file_outputs={
             'appurl': '/appurl.txt'
           }
-        )
+        ).apply(use_gcp_secret('user-gcp-sa'))
 
     # application URL will be https://ai-analytics-solutions.appspot.com/
 
@@ -130,7 +130,7 @@ def train_and_deploy_helper(preprocess, hparam_train):
         preprocess.outputs['bucket']
       ],
       file_outputs={'train': '/output.txt'}
-    )
+    ).apply(use_gcp_secret('user-gcp-sa'))
     train_tuned.set_memory_request('2G')
     train_tuned.set_cpu_request('1')
 
@@ -148,7 +148,7 @@ def train_and_deploy_helper(preprocess, hparam_train):
         'model': '/model.txt',
         'version': '/version.txt'
       }
-    )
+    ).apply(use_gcp_secret('user-gcp-sa'))
 
     return deploy_cmle
 
