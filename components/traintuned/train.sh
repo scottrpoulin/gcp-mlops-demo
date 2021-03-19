@@ -25,11 +25,10 @@ echo "Continuing to train model in $TRIALID with nnsize=$NNSIZE batch_size=$BATC
 
 # directory containing trainer package in Docker image
 # see Dockerfile
-CODEDIR=/babyweight/src/training-data-analyst/courses/machine_learning/deepdive/06_structured
 
 FROMDIR=gs://${BUCKET}/babyweight/hyperparam/$TRIALID
 OUTDIR=gs://${BUCKET}/babyweight/traintuned
-export PYTHONPATH=${CODEDIR}/babyweight:${PYTHONPATH}
+export PYTHONPATH=/babyweight:${PYTHONPATH}
 
 gsutil -m rm -rf ${OUTDIR} || true
 gsutil -m cp -r ${FROMDIR} ${OUTDIR}

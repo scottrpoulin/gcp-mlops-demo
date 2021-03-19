@@ -8,7 +8,7 @@ if [ "$#" -ne 1 ]; then
 fi
 
 BUCKET=$1
-TFVERSION=2.0
+TFVERSION=1.15
 REGION=us-central1
 
 # directory containing trainer package in Docker image
@@ -23,7 +23,7 @@ gsutil -m rm -rf $OUTDIR || true
 gcloud ai-platform jobs submit training $JOBNAME \
   --region=$REGION \
   --module-name=trainer.task \
-  --package-path=/babyweight_tf2/trainer \
+  --package-path=/babyweight/trainer \
   --job-dir=$OUTDIR \
   --staging-bucket=gs://$BUCKET \
   --scale-tier=STANDARD_1 \
