@@ -1,6 +1,6 @@
 steps:
     - name: 'gcr.io/cloud-builders/docker'
       dir:  'components/traintuned'
-      args: [ 'build', '-t', 'gcr.io/gcp-mlops-demo/babyweight-pipeline-traintuned:latest', '.' ]
+      args: [ 'build', '-t', 'gcr.io/tenacious-camp-267214/babyweight-pipeline-traintuned:latest', '.' ]
 images:
-    - 'gcr.io/gcp-mlops-demo/babyweight-pipeline-traintuned:latest'
+    - 'gcr.io/tenacious-camp-267214/babyweight-pipeline-traintuned:latest'
