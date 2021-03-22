@@ -11,16 +11,15 @@ HYPERJOB=$1
 BUCKET=$2
 TFVERSION=1.8
 REGION=us-central1
-PROJECT=$(gcloud config config-helper --format "value(configuration.properties.core.project)")
 
 echo "Extracting information for job $HYPERJOB"
 
 # get information from the best hyperparameter job
-RMSE=$(gcloud ai-platform jobs describe $HYPERJOB --project $PROJECT --format 'value(trainingOutput.trials.finalMetric.objectiveValue.slice(0))')
-NNSIZE=$(gcloud ai-platform jobs describe $HYPERJOB --project $PROJECT --format 'value(trainingOutput.trials.hyperparameters.nnsize.slice(0))')
-BATCHSIZE=$(gcloud ai-platform jobs describe $HYPERJOB --project $PROJECT --format 'value(trainingOutput.trials.hyperparameters.batch_size.slice(0))')
-NEMBEDS=$(gcloud ai-platform jobs describe $HYPERJOB --project $PROJECT --format 'value(trainingOutput.trials.hyperparameters.nembeds.slice(0))')
-TRIALID=$(gcloud ai-platform jobs describe $HYPERJOB --project $PROJECT --format 'value(trainingOutput.trials.trialId.slice(0))')
+RMSE=$(gcloud ai-platform jobs describe $HYPERJOB --project 'tenacious-camp-267214' --format 'value(trainingOutput.trials.finalMetric.objectiveValue.slice(0))')
+NNSIZE=$(gcloud ai-platform jobs describe $HYPERJOB --project 'tenacious-camp-267214' --format 'value(trainingOutput.trials.hyperparameters.nnsize.slice(0))')
+BATCHSIZE=$(gcloud ai-platform jobs describe $HYPERJOB --project 'tenacious-camp-267214' --format 'value(trainingOutput.trials.hyperparameters.batch_size.slice(0))')
+NEMBEDS=$(gcloud ai-platform jobs describe $HYPERJOB --project 'tenacious-camp-267214' --format 'value(trainingOutput.trials.hyperparameters.nembeds.slice(0))')
+TRIALID=$(gcloud ai-platform jobs describe $HYPERJOB --project 'tenacious-camp-267214' --format 'value(trainingOutput.trials.trialId.slice(0))')
 
 echo "Continuing to train model in $TRIALID with nnsize=$NNSIZE batch_size=$BATCHSIZE nembeds=$NEMBEDS"
 
