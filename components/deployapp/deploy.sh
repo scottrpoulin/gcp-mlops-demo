@@ -9,7 +9,7 @@ fi
 export MODEL_NAME=$1
 export MODEL_VERSION=$2
 
-cd /application
+cd /babyweight/src/gcp-mlops-demo/application
 
 pip install -r requirements.txt -t lib
 gcloud app create
