@@ -11,7 +11,7 @@ HYPERJOB=$1
 BUCKET=$2
 TFVERSION=1.8
 REGION=us-central1
-PROJECT=$3
+PROJECT=$(gcloud config config-helper --format "value(configuration.properties.core.project)")
 
 echo "Extracting information for job $HYPERJOB"
 
