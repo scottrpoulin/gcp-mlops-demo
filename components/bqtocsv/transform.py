@@ -48,7 +48,7 @@ def preprocess(in_test_mode, PROJECT, BUCKET, start_year):
     os.makedirs(OUTPUT_DIR)
   else:
     print('Launching Dataflow job {} ... hang on'.format(job_name))
-    if start_year == '2000':
+    if start_year == '2011':
       OUTPUT_DIR = 'gs://{0}/babyweight/preproc/'.format(BUCKET)
       try:
         subprocess.check_call(
@@ -125,7 +125,7 @@ if __name__ == '__main__':
                       help='Bucket to store outputs.')
   parser.add_argument('--start_year',
                       type=str,
-                      default='2000',
+                      default='2011',
                       help='Year to start extracting data. If 2000, older data will be removed')
   parser.add_argument('--mode',
                       choices=['local', 'cloud'],
