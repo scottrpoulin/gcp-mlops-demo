@@ -23,7 +23,7 @@ gsutil -m rm -rf $OUTDIR || true
 gcloud ai-platform jobs submit training $JOBNAME \
   --region=$REGION \
   --module-name=trainer.task \
-  --package-path=/babyweight/trainer \
+  --package-path=/babyweight/src/babyweight/trainer \
   --job-dir=$OUTDIR \
   --staging-bucket=gs://$BUCKET \
   --scale-tier=STANDARD_1 \
