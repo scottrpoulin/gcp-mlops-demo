@@ -173,3 +173,37 @@ def finetune_and_deploy(filename):
         pipeline = client.create_run_from_pipeline_func(train_and_deploy, args)
         return 'Fine tuning job Launched!'
 
+@dsl.pipeline(
+  name='babyweight',
+  description='Deploy Babyweight model that is trained and tuned'
+)
+def deploy(modeldir):
+    deploy_cmle = dsl.ContainerOp(
+        name='deploycmle',
+        # image needs to be a compile-time string
+        image='gcr.io/tenacious-camp-267214/babyweight-pipeline-deploycmle:latest',
+        arguments=[
+            modeldir,  # modeldir
+            'babyweight',
+            'mlp'
+        ],
+        file_outputs={
+            'model': '/model.txt',
+            'version': '/version.txt'
+        }
+    ).apply(use_gcp_secret('user-gcp-sa'))
+
+    deploy_app = dsl.ContainerOp(
+        name='deployapp',
+        # image needs to be a compile-time string
+        image='gcr.io/tenacious-camp-267214/babyweight-pipeline-deployapp:latest',
+        arguments=[
+            deploy_cmle.outputs['model'],
+            deploy_cmle.outputs['version']
+        ],
+        file_outputs={
+            'appurl': '/appurl.txt'
+        }
+    ).apply(use_gcp_secret('user-gcp-sa'))
+
+
