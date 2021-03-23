@@ -208,4 +208,21 @@ def deploy(modeldir):
     ).apply(use_gcp_secret('user-gcp-sa'))
     deploy_app.execution_options.caching_strategy.max_cache_staleness = "P0D"
 
-
+@dsl.pipeline(
+  name='babyweight',
+  description='Deploy App'
+)
+def deployapp(model, version):
+    deploy_app = dsl.ContainerOp(
+        name='deployapp',
+        # image needs to be a compile-time string
+        image='gcr.io/tenacious-camp-267214/babyweight-pipeline-deployapp:latest',
+        arguments=[
+            model,
+            version
+        ],
+        file_outputs={
+            'appurl': '/appurl.txt'
+        }
+    ).apply(use_gcp_secret('user-gcp-sa'))
+    deploy_app.execution_options.caching_strategy.max_cache_staleness = "P0D"
