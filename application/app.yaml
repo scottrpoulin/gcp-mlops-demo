@@ -4,7 +4,7 @@ handlers:
 - url: /
   script: auto
 - url: /.*
-  script: auto
+  script: main.app
   login: required
 
 env_variables:
