@@ -9,7 +9,7 @@ MODEL_LOCATION=$(gsutil ls $1/export/exporter | tail -1)
 MODEL_NAME=$2
 MODEL_VERSION=$3
 
-TFVERSION=1.8
+TFVERSION=1.15
 REGION=us-central1
 
 # create the model if it doesn't already exist
