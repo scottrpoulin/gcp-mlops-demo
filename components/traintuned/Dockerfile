@@ -38,7 +38,6 @@ ENV PATH $PATH:/tools/node/bin:/tools/google-cloud-sdk/bin
 RUN mkdir -p /babyweight/src && \
     cd /babyweight/src && \
     git clone https://github.com/scottrpoulin/gcp-mlops-demo && \
-    rm -rf /ml/trainer
 
 COPY train.sh ./
 

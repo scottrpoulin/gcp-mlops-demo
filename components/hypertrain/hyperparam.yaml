@@ -3,7 +3,7 @@ trainingInput:
   hyperparameters:
     hyperparameterMetricTag: rmse
     goal: MINIMIZE
-    maxTrials: 20
+    maxTrials: 10
     maxParallelTrials: 5
     enableTrialEarlyStopping: True
     params:
