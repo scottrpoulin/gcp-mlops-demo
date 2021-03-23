@@ -24,11 +24,13 @@ from flask import render_template
 from flask import request
 from flask import url_for
 from googleapiclient import discovery
+from google.api_core.client_options import ClientOptions
 from oauth2client.client import GoogleCredentials
 
 
-credentials = GoogleCredentials.get_application_default()
-api = discovery.build('ml', 'v1', credentials=credentials)
+endpoint = 'https://us-central1-ml.googleapis.com'
+client_options = ClientOptions(api_endpoint=endpoint)
+api = discovery.build('ml', 'v1', client_options=client_options)
 project = 'tenacious-camp-267214'
 model_name = os.getenv('MODEL_NAME', 'babyweight')
 version_name = os.getenv('VERSION_NAME', 'mlp')
@@ -39,7 +41,7 @@ app = Flask(__name__)
 
 def get_prediction(features):
   input_data = {'instances': [features]}
-  parent = 'projects/%s/models/%s/versions/%s' % (project, model_name, version_name)
+  parent = 'projects/%s/models/%s/%s' % (project, model_name, version_name)
   prediction = api.projects().predict(body=input_data, name=parent).execute()
   return prediction['predictions'][0]['babyweight'][0]
 
