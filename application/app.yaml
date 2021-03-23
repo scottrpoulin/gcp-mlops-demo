@@ -2,9 +2,9 @@ runtime: python37
 
 handlers:
 - url: /
-  script: main.app
+  script: auto
 - url: /.*
-  script: main.app
+  script: auto
   login: required
 
 env_variables:
