@@ -1,5 +1,4 @@
 runtime: python37
-api_version: 1
 
 handlers:
 - url: /
@@ -10,4 +9,4 @@ handlers:
 
 env_variables:
   MODEL_NAME: 'babyweight'
-  VERSION_NAME: 'dnn'
+  VERSION_NAME: 'mlp'
