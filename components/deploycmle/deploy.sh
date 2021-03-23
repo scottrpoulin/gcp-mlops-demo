@@ -13,11 +13,11 @@ TFVERSION=1.8
 REGION=us-central1
 
 # create the model if it doesn't already exist
-modelname=$(gcloud ai-platform models list | grep -w "$MODEL_NAME")
+modelname=$(gcloud ai-platform models list --region=$REGION | grep -w "$MODEL_NAME")
 echo $modelname
 if [ -z "$modelname" ]; then
    echo "Creating model $MODEL_NAME"
-   gcloud ai-platform models create ${MODEL_NAME} --regions $REGION
+   gcloud ai-platform models create ${MODEL_NAME} --region=$REGION
 else
    echo "Model $MODEL_NAME already exists"
 fi
