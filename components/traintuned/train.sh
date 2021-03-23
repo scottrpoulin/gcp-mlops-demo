@@ -28,7 +28,7 @@ echo "Continuing to train model in $TRIALID with nnsize=$NNSIZE batch_size=$BATC
 
 FROMDIR=gs://${BUCKET}/babyweight/hyperparam/$TRIALID
 OUTDIR=gs://${BUCKET}/babyweight/traintuned
-export PYTHONPATH=/babyweight:${PYTHONPATH}
+export PYTHONPATH=/babyweight/src/gcp-mlops-demo/babyweight:${PYTHONPATH}
 
 gsutil -m rm -rf ${OUTDIR} || true
 gsutil -m cp -r ${FROMDIR} ${OUTDIR}
