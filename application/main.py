@@ -25,7 +25,6 @@ from flask import request
 from flask import url_for
 from googleapiclient import discovery
 from google.api_core.client_options import ClientOptions
-from oauth2client.client import GoogleCredentials
 
 
 endpoint = 'https://us-central1-ml.googleapis.com'
