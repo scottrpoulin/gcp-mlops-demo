@@ -191,7 +191,7 @@ def deploy(modeldir):
             'model': '/model.txt',
             'version': '/version.txt'
         }
-    ).apply(use_gcp_secret('user-gcp-sa'))
+    ).apply(use_gcp_secret('user-gcp-sa')).execution_options.caching_strategy.max_cache_staleness = "P0D"
 
     deploy_app = dsl.ContainerOp(
         name='deployapp',
@@ -204,6 +204,6 @@ def deploy(modeldir):
         file_outputs={
             'appurl': '/appurl.txt'
         }
-    ).apply(use_gcp_secret('user-gcp-sa'))
+    ).apply(use_gcp_secret('user-gcp-sa')).execution_options.caching_strategy.max_cache_staleness = "P0D"
 
 
