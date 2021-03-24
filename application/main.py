@@ -44,7 +44,7 @@ def get_prediction(features):
   parent = 'projects/%s/models/%s/versions/%s' % (project, model_name, version_name)
   prediction = api.projects().predict(body=input_data, name=parent).execute()
   print(prediction)
-  return prediction[0]['predictions'][0]['babyweight'][0]
+  return prediction['predictions'][0]['babyweight']
 
 
 @app.route('/')
