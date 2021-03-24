@@ -11,7 +11,6 @@ export MODEL_VERSION=$2
 
 cd /babyweight/src/gcp-mlops-demo/application
 
-
 pip install -r requirements.txt -t lib
 gcloud app create --region=us-central
 gcloud app deploy
