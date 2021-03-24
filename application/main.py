@@ -43,7 +43,7 @@ def get_prediction(features):
                 'instances': [features]}
   parent = 'projects/%s/models/%s/versions/%s' % (project, model_name, version_name)
   prediction = api.projects().predict(body=input_data, name=parent).execute()
-  return prediction['predictions'][0]
+  return prediction['predictions'][0][0]
 
 
 @app.route('/')
@@ -84,4 +84,4 @@ def predict():
   features['gestation_weeks'] = float(data['gestation_weeks'])
 
   prediction = get_prediction(features)
-  return jsonify({'result': prediction})
+  return jsonify({'result': '{:.2f} lbs.'.format(prediction)})
