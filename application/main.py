@@ -84,4 +84,4 @@ def predict():
   features['gestation_weeks'] = float(data['gestation_weeks'])
 
   prediction = get_prediction(features)
-  return jsonify({'result': '{:.2f} lbs.'.format(prediction)})
+  return jsonify({'result': prediction})
