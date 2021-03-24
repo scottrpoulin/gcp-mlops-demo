@@ -43,7 +43,6 @@ def get_prediction(features):
                 'instances': [features]}
   parent = 'projects/%s/models/%s/versions/%s' % (project, model_name, version_name)
   prediction = api.projects().predict(body=input_data, name=parent).execute()
-  print(prediction)
   return prediction['predictions'][0]
 
 
