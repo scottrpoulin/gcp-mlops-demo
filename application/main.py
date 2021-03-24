@@ -39,7 +39,8 @@ app = Flask(__name__)
 
 
 def get_prediction(features):
-  input_data = {'instances': [features]}
+  input_data = {'signature_name': 'predict',
+                'instances': [features]}
   parent = 'projects/%s/models/%s/versions/%s' % (project, model_name, version_name)
   prediction = api.projects().predict(body=input_data, name=parent).execute()
   return prediction['predictions'][0]['babyweight'][0]
