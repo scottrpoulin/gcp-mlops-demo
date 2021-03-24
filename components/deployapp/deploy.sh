@@ -16,7 +16,6 @@ pip install -r requirements.txt -t lib
 gcloud app create --region=us-central
 gcloud app deploy
 
-
 # output
 PROJECT=$(gcloud config get-value project)
 echo "https://${PROJECT}.appspot.com" > /appurl.txt
